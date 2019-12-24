@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ArquitecturaDeSoftware.Apps.TrollBook'
+    'ArquitecturaDeSoftware.Apps.TrollBook',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

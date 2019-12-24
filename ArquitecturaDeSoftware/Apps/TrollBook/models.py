@@ -10,6 +10,7 @@ class Troll(models.Model):
     FechaNacimiento = models.DateField()
     SEXOS=(('F','Femenino'),('M','Masculino'))
     Sexo=models.CharField(max_length=1,choices=SEXOS,default='M')
+    image = models.BinaryField(blank=True)
 
     def NombreCompleto(self):
         cadena= "{0} {1},{2}"
@@ -17,3 +18,5 @@ class Troll(models.Model):
     
     def __str__(self):
         return self.NombreCompleto()
+
+    

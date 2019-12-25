@@ -9,6 +9,7 @@ class TrollbookConfig(AppConfig):
 
 class UserAPI(APIView):
     def post(self,request):
+        #los datos estan en el request.data
         serializer = UserSerializer(data = request.data)
         if serializer.is_valid():
             user = serializer.save()

@@ -28,3 +28,13 @@ class UserSerializer(serializers.Serializer):
             raise serializers.ValidationError("Este nombre de usuario ya existe, ingrese uno nuevo")
         else: 
             return data
+
+#creo un modelo de usuario para poder verlo en viewas 
+class UserModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSerializer
+        field = {
+            'id',
+            'Nombres',
+            'Apellidos'
+        }

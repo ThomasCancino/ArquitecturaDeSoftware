@@ -17,6 +17,10 @@ pip install django-rest-framework
         python manage.py runserver 
     localhost:8000/Apps/1.0/create_user
 
+Base de datos: 
+python manage.py makemigrations
+python manage.py migrate
+
 """
 
 import os

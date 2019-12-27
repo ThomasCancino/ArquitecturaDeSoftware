@@ -2,7 +2,7 @@ import socket
 import sys
 import json
 
-HOST = '192.168.1.20'
+HOST = '127.0.0.1'
 PORT = 5000
 BUFFER_SIZE = 8192
 

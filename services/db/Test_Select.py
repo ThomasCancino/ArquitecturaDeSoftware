@@ -4,9 +4,9 @@ import time
 import json
 import sys
 
-HOST = '127.0.0.1'
+HOST = '192.168.1.20'
 PORT = 5000
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 8192
 
 def get_data(s, BUFFER_SIZE):
     data = b''
@@ -17,6 +17,22 @@ def get_data(s, BUFFER_SIZE):
             break
 
     return data
+
+def format_data(data):
+    if len(data) <= 99999 and len(data) > 9999:
+      return str(len(data)+5) + "HOLIS" + data
+    elif len(data) <= 9999 and len(data) > 999:
+      return "0" + str(len(data)+5) + "HOLIS" + data
+    elif len(data) <= 999 and len(data) > 99:
+      return "00" + str(len(data)+5) + "HOLIS" + data
+    elif len(data) <= 99 and len(data) > 9:
+      return "000" + str(len(data)+5) + "HOLIS" + data
+    elif len(data) <= 9 and len(data) > 0:
+      return "0000" + str(len(data)+5) + "HOLIS" + data
+    elif len(data) == 0:
+      return "00005HOLIS"
+    else:
+        return "00010HOLISERROR"
 
 #def formatted_message(service: str, msg: str):
 #    length = len(service + msg)
@@ -59,11 +75,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         c.execute("SELECT * FROM CLIENTS")
 
       aux1 = get_product_json(c.fetchall())
-      aux2 = "00" + str(len(aux1)+5) + "HOLIS" + aux1 #HACERLO FUNCION PLSSSSSSSSSSSSSSS
+      aux2 = format_data(aux1)
       conn.commit()
       conn.close()
       
-      # aux2 = bytes(aux2, 'utf-8')
+      #aux2 = bytes(aux2, 'utf-8')
       #print(aux2, type(aux2))     
       #print(sys.getsizeof(bytes(aux2, 'utf-8')))
       

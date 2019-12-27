@@ -36,5 +36,5 @@ class UserModelSerializer(serializers.ModelSerializer):
         field = {
             'id',
             'Nombres',
-            'Apellidos'
+            'Apellidos',
         }
